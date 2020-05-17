@@ -26,10 +26,10 @@
 				src="TRI.png"
 				alt="img属性が利用できるブラウザでのみご利用ください。"
 				style="
-					overflow: hidden;
 					width: 80vw;
 					height: 80vw;
 					margin: 10vw 0 0 10vw;
+					display: none;
 				"
 				id="TRI"
 			/>
@@ -46,7 +46,7 @@
 				document.getElementsByTagName('body')[0].style.backgroundColor = 'black';
 				window.addEventListener('deviceorientation', e => {
 					if (e) {
-						document.getElementById('TRI').style.transform = `rotate(${-e.alpha})`;
+						document.getElementById('TRI').style.transform = `rotate(${-e.alpha}deg)`;
 					};
 				});
 			};
