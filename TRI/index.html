@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-title" content="spin">
+		<title>spin</title>
+		<link rel="stylesheet" href="/css/index.css">
+		<link rel="stylesheet" href="/css/app.css">
+		<link rel="stylesheet" href="/css/btn.css">
+		<style>
+			body {
+				font-family: monospace;
+				overflow: hidden;
+				background-color: #fff;
+			}
+		</style>
+	</head>
+	<body>
+		<main>
+			<button id="permbtn">start "HANDTRI"</button>
+			<img
+				class="a"
+				src="TRI.png"
+				alt="img属性が利用できるブラウザでのみご利用ください。"
+				style="
+					width: 80vw;
+					height: 80vw;
+					margin: 10vw 0 0 10vw;
+				"
+				id="TRI"
+			/>
+		</main>
+		<script>
+			'use strict';
+			const fail = () => document.getElementById('permbtn').textContent = 'HANDSPINNER is failed..';
+			const succ = () => {
+				const out = document.getElementById('output');
+				out.style.display = 'block';
+				out.style.width = screen.width;
+				out.style.height = screen.height;
+				document.getElementById('permbtn').style.display = 'none';
+				document.getElementsByTagName('body')[0].style.backgroundColor = 'black';
+				window.addEventListener('deviceorientation', e => {
+					if (e) {
+						document.getElementById('TRI').style.transform = `rotate(${-e.alpha})`;
+					};
+				});
+			};
+
+
+			const rp = () => {
+				try {
+					DeviceMotionEvent.requestPermission().then(mps => {
+						DeviceOrientationEvent.requestPermission().then(ops => {
+							if (mps === 'granted' && ops === 'granted') {
+								succ();
+							} else {
+								fail();
+							};
+						});
+					});
+				} catch {
+					fail();
+				};
+			};
+			if (window.DeviceMotionEvent && DeviceMotionEvent.requestPermission && window.DeviceOrientationEvent && DeviceOrientationEvent.requestPermission) {
+				if (typeof DeviceMotionEvent.requestPermission === 'function' && typeof DeviceOrientationEvent.requestPermission === 'function') {
+					document.getElementById('permbtn').addEventListener('click', rp);
+				} else {
+					succ();
+				};
+			} else {
+				document.getElementsByTagName('main')[0].textContent = 'HANDTRI is failed..';
+			};
+		</script>
+	</body>
+</html>
