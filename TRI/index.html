@@ -5,17 +5,17 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
-		<meta name="apple-mobile-web-app-title" content="spin">
-		<title>spin</title>
+		<meta name="apple-mobile-web-app-title" content="TRI">
+		<title>TRI</title>
 		<link rel="stylesheet" href="/css/index.css">
 		<link rel="stylesheet" href="/css/app.css">
 		<link rel="stylesheet" href="/css/btn.css">
 		<style>
 			body {
-				font-family: monospace;
 				overflow: hidden;
 				background-color: #fff;
 			}
+				font-family: monospace;
 		</style>
 	</head>
 	<body>
@@ -36,17 +36,13 @@
 		</main>
 		<script>
 			'use strict';
-			const fail = () => document.getElementById('permbtn').textContent = 'HANDSPINNER is failed..';
+			const fail = () => document.getElementById('permbtn').textContent = 'TRI cannot run because the permission is denied.';
 			const succ = () => {
-				const tri = document.getElementById('TRI');
-				tri.style.display = 'block';
-				tri.style.width = screen.width;
-				tri.style.height = screen.height;
+				document.getElementById('TRI').style.display = 'block';
 				document.getElementById('permbtn').style.display = 'none';
-				document.getElementsByTagName('body')[0].style.backgroundColor = 'black';
 				window.addEventListener('deviceorientation', e => {
 					if (e) {
-						tri.style.transform = `rotate(${-e.alpha}deg)`;
+						document.getElementById('TRI').style.transform = `rotate(${e.alpha}deg)`;
 					};
 				});
 			};
@@ -74,7 +70,7 @@
 					succ();
 				};
 			} else {
-				document.getElementsByTagName('main')[0].textContent = 'HANDTRI is failed..';
+				document.getElementsByTagName('main')[0].textContent = 'device sensors not found.';
 			};
 		</script>
 	</body>
