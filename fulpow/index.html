@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>センサー値を表示</title>
+		<style>
+			body {
+				margin: 0;
+				overflow: scroll;
+			}
+			p {
+				display: block;
+				margin: 0;
+				white-space: nowrap;
+			}
+			#output {
+				-webkit-display: none;
+				-moz-display: none;
+				-ms-display: none;
+				-o-display: none;
+				display: none;
+				color: #0f0;
+				font-family: monospace;
+			}
+			.fz0 {text-indent: 0rem;}
+			.fz2 {text-indent: 2rem;}
+			.fz4 {text-indent: 4rem;}
+			.fz6 {text-indent: 6rem;}
+			.fz8 {text-indent: 8rem;}
+		</style>
+	</head>
+	<body>
+		<main>
+			<button id="permbtn">あなたのスマホのフルパワーを今すぐ確認！</button>
+			<div id="output">
+				<p class="fz0">const FUL_POW_OF_YOUR_DEV = {</p>
+					<p class="fz2">motion = {</p>
+						<p class="fz4">interval = <span id="mo.i">null</span></p>
+						<p class="fz4">accelerationIncludingGravity = {</p>
+							<p class="fz6">x = <span id="mo.acci.x">null</span></p>
+							<p class="fz6">y = <span id="mo.acci.y">null</span></p>
+							<p class="fz6">z = <span id="mo.acci.z">null</span></p>
+						<p class="fz4">},</p>
+						<p class="fz4">acceleration = {</p>
+							<p class="fz6">x = <span id="mo.acc.x">null</span></p>
+							<p class="fz6">y = <span id="mo.acc.y">null</span></p>
+							<p class="fz6">z = <span id="mo.acc.z">null</span></p>
+						<p class="fz4">},</p>
+						<p class="fz4">rotationRate = {</p>
+							<p class="fz6">alpha = <span id="mo.rot.a">null</span></p>
+							<p class="fz6">beta = <span id="mo.rot.b">null</span></p>
+							<p class="fz6">gamma = <span id="mo.rot.g">null</span></p>
+						<p class="fz4">},</p>
+					<p class="fz2">},</p>
+					<p class="fz2">orientation = {</p>
+						<p class="fz4">absolute = <span id="or.abs">null</span></p>
+						<p class="fz4">alpha = <span id="or.a">null</span></p>
+						<p class="fz4">beta = <span id="or.b">null</span></p>
+						<p class="fz4">gamma = <span id="or.g">null</span></p>
+						<p class="fz4">webkitCompassHeading = <span id="or.wch">null</span></p>
+						<p class="fz4">webkitCompassAccuracy = <span id="or.wca">null</span></p>
+					<p class="fz2">},</p>
+					<p class="fz2">coords = {</p>
+						<p class="fz4">latitude = <span id="co.lat">null</span></p>
+						<p class="fz4">longitude = <span id="co.long">null</span></p>
+						<p class="fz4">altitude = <span id="co.alt">null</span></p>
+						<p class="fz4">accuracy = <span id="co.ac">null</span></p>
+						<p class="fz4">altitudeAccuracy = <span id="co.aac">null</span></p>
+						<p class="fz4">heading = <span id="co.he">null</span></p>
+						<p class="fz4">speed = <span id="co.sp">null</span></p>
+					<p class="fz2">}</p>
+					<p class="fz2">navigator = {</p>
+						<p class="fz4">os = <span id="na.pf">null</span></p>
+						<p class="fz4">maxtouch = <span id="na.mt">null</span></p>
+						<p class="fz4">product = <span id="na.pr">null</span></p>
+						<p class="fz4">productsub = <span id="na.prs">null</span></p>
+						<p class="fz4">appname = <span id="na.an">null</span></p>
+						<p class="fz4">appcodename = <span id="na.acn">null</span></p>
+						<p class="fz4">appver = <span id="na.av">null</span></p>
+						<p class="fz4">useragent = <span id="na.ua">null</span></p>
+						<p class="fz4">vendor = <span id="na.v">null</span></p>
+						<p class="fz4">vendorsub = <span id="na.vs">null</span></p>
+						<p class="fz4">lang = <span id="na.lng">null</span></p>
+						<p class="fz4">cookie = <span id="na.coo">null</span></p>
+					<p class="fz2">}</p>
+					<p class="fz2">screen = {</p>
+						<p class="fz4">type = <span id="sc.ty">null</span></p>
+						<p class="fz4">devdepth = <span id="sc.dd">null</span></p>
+						<p class="fz4">pixeldepth = <span id="sc.pd">null</span></p>
+						<p class="fz4">colordepth = <span id="sc.cd">null</span></p>
+						<p class="fz4">[</p>
+							<p class="fz6">{</p>
+								<p class="fz8">x = <span id="sc.ou.x">null</span></p>
+								<p class="fz8">y = <span id="sc.ou.y">null</span></p>
+								<p class="fz8">w = <span id="sc.ou.w">null</span></p>
+								<p class="fz8">h = <span id="sc.ou.h">null</span></p>
+							<p class="fz6">}</p>
+							<p class="fz6">{</p>
+								<p class="fz8">x = <span id="sc.in.x">null</span></p>
+								<p class="fz8">y = <span id="sc.in.y">null</span></p>
+								<p class="fz8">w = <span id="sc.in.w">null</span></p>
+								<p class="fz8">h = <span id="sc.in.h">null</span></p>
+								<p class="fz8">s = <span id="sc.in.s">null</span></p>
+							<p class="fz6">}</p>
+						<p class="fz4">]</p>
+						<p class="fz4">height = <span id="sc.h">null</span></p>
+						<p class="fz4">orientation = {</p>
+							<p class="fz6">angle = <span id="sc.or.i">null</span></p>
+							<p class="fz6">type = <span id="sc.or.s">null</span></p>
+						<p class="fz4">}</p>
+					<p class="fz2">}</p>
+					<p class="fz2">performance = {</p>
+						<p class="fz4">memory = <span id="pf.m">null</span></p>
+						<p class="fz4">hardware = <span id="pf.h">null</span></p>
+						<p class="fz4">totaljsheap = <span id="pf.tj">null</span></p>
+						<p class="fz4">jsheap = <span id="pf.j">null</span></p>
+						<p class="fz4">usedjsheap = <span id="pf.uj">null</span></p>
+					<p class="fz2">}</p>
+				<p class="fz0">}</p>
+			</div>
+		</main>
+		<script>
+			'use strict';
+			const setx = (s, v) => document.getElementById(s).textContent = v == undefined ? 'null' : v;
+			const sett = (s, v) => setx(s, v == undefined ? 'null' : `"${String(v).replace('"', '\"')}"`);
+			const fail = () => document.getElementById('permbtn').textContent = 'ごめん無理だった…。';
+			const succ = () => {
+				document.getElementById('permbtn').style.display = 'none';
+				document.getElementById('output').style.display = 'block';
+				document.getElementsByTagName('body')[0].style.backgroundColor = 'black';
+				window.addEventListener('devicemotion', e => {
+					setx('mo.i', e.interval);
+					setx('mo.acci.x', e.accelerationIncludingGravity.x);
+					setx('mo.acci.y', e.accelerationIncludingGravity.y);
+					setx('mo.acci.z', e.accelerationIncludingGravity.z);
+					setx('mo.acc.x', e.acceleration.x);
+					setx('mo.acc.y', e.acceleration.y);
+					setx('mo.acc.z', e.acceleration.z);
+					setx('mo.rot.a', e.rotationRate.alpha);
+					setx('mo.rot.b', e.rotationRate.beta);
+					setx('mo.rot.g', e.rotationRate.gamma);
+				});
+				window.addEventListener('deviceorientation', e => {
+					setx('or.abs', e.absolute);
+					setx('or.a', e.alpha);
+					setx('or.b', e.beta);
+					setx('or.g', e.gamma);
+					setx('or.wca', e.webkitCompassAccuracy);
+					setx('or.wch', e.webkitCompassHeading);
+				});
+				navigator.geolocation.watchPosition(e => {
+					setx('co.lat', e.coords.latitude);
+					setx('co.long', e.coords.longitude);
+					setx('co.alt', e.altitude);
+					setx('co.ac', e.coords.accuracy);
+					setx('co.aac', e.altitudeAccuracy);
+					setx('co.he', e.coords.heading);
+					setx('co.sp', e.coords.speed);
+				});
+				window.addEventListener('orientationchange', () => {
+					let angle = screen && screen.orientation && screen.orientation.angle;
+					if (!angle) {
+						angle = window.orientation;
+					};
+					setx('sc.or.i', angle);
+					sett('sc.or.s', screen.msOrientation || screen.mozOrientation || (screen.orientation || {}).type);
+				});
+				let angle = screen && screen.orientation && screen.orientation.angle;
+				if (!angle) {
+					angle = window.orientation;
+				};
+				window.addEventListener('scroll', () => {
+					setx('sc.in.x', visualViewport.pageLeft);
+					setx('sc.in.y', visualViewport.pageTop);
+				});
+				setx('sc.in.x', visualViewport.pageLeft);
+				setx('sc.in.y', visualViewport.pageTop);
+				window.addEventListener('resize', () => {
+					setx('sc.in.w', visualViewport.width);
+					setx('sc.in.h', visualViewport.height);
+				});
+				setx('sc.in.w', visualViewport.width);
+				setx('sc.in.h', visualViewport.height);
+
+				setx('sc.in.s', visualViewport.scale);
+
+				setx('sc.or.i', angle);
+				sett('sc.or.s', screen.msOrientation || screen.mozOrientation || (screen.orientation || {}).type);
+				setx('sc.dd', window.devicePixelRatio);
+				setx('sc.pd', screen.pixelDepth);
+				setx('sc.cd', screen.colorDepth);
+				sett('sc.ty', styleMedia.type);
+				setx('sc.ou.x', screen.availLeft);
+				setx('sc.ou.y', screen.availTop);
+				setx('sc.ou.w', screen.width);
+				setx('sc.ou.h', screen.height);
+
+				sett('na.ua', navigator.userAgent);
+				sett('na.acn', navigator.appCodeName);
+				sett('na.av', navigator.appVersion);
+				sett('na.an', navigator.appName);
+				sett('na.pf', navigator.platform);
+				sett('na.pr', navigator.product);
+				setx('na.prs', navigator.productSub);
+				sett('na.v', navigator.vendor);
+				setx('na.vs', navigator.vendorSub);
+				sett('na.lng', navigator.language);
+				setx('na.coo', navigator.cookieEnable);
+				setx('na.mt', navigator.maxTouchPoints);
+
+				setx('pf.m', navigator.deviceMemory);
+				setx('pf.h', navigator.hardwareConcurrency);
+				setx('pf.tj', performance.memory.jsHeapSizeLimit);
+				setx('pf.j', performance.memory.totalJSHeapSize);
+				setx('pf.uj', performance.memory.usedJSHeapSize);
+			};
+
+
+			const rp = () => {
+				try {
+					DeviceMotionEvent.requestPermission().then(mps => {
+						DeviceOrientationEvent.requestPermission().then(ops => {
+							if (mps === 'granted' && ops === 'granted') {
+								succ();
+							} else {
+								fail();
+							};
+						});
+					});
+				} catch {
+					fail();
+				};
+			};
+			if (window.DeviceMotionEvent && DeviceMotionEvent.requestPermission && window.DeviceOrientationEvent && DeviceOrientationEvent.requestPermission) {
+				if (typeof DeviceMotionEvent.requestPermission === 'function' && typeof DeviceOrientationEvent.requestPermission === 'function') {
+					document.getElementById('permbtn').addEventListener('click', rp);
+				} else {
+					succ();
+				};
+			} else {
+				document.getElementsByTagName('main')[0].textContent = 'ごめんwwそもそもこのスマホ対応してないわ。ってかこれ本当にスマホ？';
+			};
+		</script>
+	</body>
+</html>

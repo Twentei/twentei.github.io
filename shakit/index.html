@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-title" content="VR">
+		<title>VR</title>
+		<style>
+			body {
+				margin: 0;
+				overflow: hidden;
+			}
+			#output {
+				-webkit-display: none;
+				-moz-display: none;
+				-ms-display: none;
+				-o-display: none;
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<main>
+			<button id="permbtn">あなたのスマホのフルパワーを今すぐ確認！</button>
+			<svg id="output" viewBox="-0.5 -0.5 1 1">
+				<circle x="0" y="0" r="0.1" fill="white"></circle>
+			</svg>
+		</main>
+		<script>
+			'use strict';
+			const fail = () => document.getElementById('permbtn').textContent = 'ごめん無理だった…。';
+			const succ = () => {
+				const out = document.getElementById('output');
+				out.style.display = 'block';
+				out.style.width = screen.width;
+				out.style.height = screen.height;
+				document.getElementById('permbtn').style.display = 'none';
+				document.getElementsByTagName('body')[0].style.backgroundColor = 'black';
+				window.addEventListener('devicemotion', e => {
+					if (e) {
+						const circ = document.getElementsByTagName('circle')[0];
+						circ.setAttribute('cx', 0.05 * e.acceleration.x);
+						circ.setAttribute('cy', 0.05 * e.acceleration.y);
+					};
+				});
+				window.addEventListener('deviceorientation', e => {
+				});
+				navigator.geolocation.watchPosition(e => {
+				});
+				window.addEventListener('orientationchange', () => {
+				});
+				window.addEventListener('scroll', () => {
+				});
+				window.addEventListener('resize', () => {
+				});
+			};
+
+
+			const rp = () => {
+				try {
+					DeviceMotionEvent.requestPermission().then(mps => {
+						DeviceOrientationEvent.requestPermission().then(ops => {
+							if (mps === 'granted' && ops === 'granted') {
+								succ();
+							} else {
+								fail();
+							};
+						});
+					});
+				} catch {
+					fail();
+				};
+			};
+			// if (window.DeviceMotionEvent && DeviceMotionEvent.requestPermission && window.DeviceOrientationEvent && DeviceOrientationEvent.requestPermission) {
+			// 	if (typeof DeviceMotionEvent.requestPermission === 'function' && typeof DeviceOrientationEvent.requestPermission === 'function') {
+			// 		document.getElementById('permbtn').addEventListener('click', rp);
+			// 	} else {
+					succ();
+			// 	};
+			// } else {
+			// 	document.getElementsByTagName('main')[0].textContent = 'ごめんwwそもそもこのスマホ対応してないわ。ってかこれ本当にスマホ？';
+			// };
+		</script>
+	</body>
+</html>
