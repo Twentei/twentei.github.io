@@ -38,15 +38,15 @@
 			'use strict';
 			const fail = () => document.getElementById('permbtn').textContent = 'HANDSPINNER is failed..';
 			const succ = () => {
-				const out = document.getElementById('output');
-				out.style.display = 'block';
-				out.style.width = screen.width;
-				out.style.height = screen.height;
+				const tri = document.getElementById('TRI');
+				tri.style.display = 'block';
+				tri.style.width = screen.width;
+				tri.style.height = screen.height;
 				document.getElementById('permbtn').style.display = 'none';
 				document.getElementsByTagName('body')[0].style.backgroundColor = 'black';
 				window.addEventListener('deviceorientation', e => {
 					if (e) {
-						document.getElementById('TRI').style.transform = `rotate(${-e.alpha}deg)`;
+						tri.style.transform = `rotate(${-e.alpha}deg)`;
 					};
 				});
 			};
