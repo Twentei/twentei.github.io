@@ -53,7 +53,7 @@
 					(sinc(Math.sin, i0, getXYZ(i1)) + sinc(Math.cos, i0, getXYZ(i2))) * sinc(Math.cos, i3, 1)
 				];
 				if (90 <= b && 90 <= c < 180) {
-					b /= 2;
+					b *= sin(c)
 					
 				};
 				// b *= sinc(Math.cos, c + 90, 1);
