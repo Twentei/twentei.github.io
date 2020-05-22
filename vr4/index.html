@@ -54,8 +54,8 @@
 
 				[z, x] = calc(ang[2], 2, 0);
 				[y, z] = calc(ang[1], 1, 2);
-				[x, y] = calc(ang[0], 0, 1);
-				[z, x] = calc(-90, 2, 0);
+				[y, z] = calc(-90, 1, 2);
+				[x, y] = calc(-ang[0], 0, 1);
 				circs({
 					'cx': x - 0.05,
 					'cy': y - 0.05,
