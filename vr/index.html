@@ -32,7 +32,7 @@
 				<circle cx="0" cy="0" r="0.1" fill="green"></circle>
 				<circle cx="0" cy="0" r="0.1" fill="blue"></circle>
 				<circle cx="0" cy="0" r="0.1" fill="magenta"></circle>
-				<text x="-0.4" y="-0.4" font-size="0.05">こんにちは。</text>
+				<text x="-0.4" y="-0.4" font-size="0.05"></text>
 				<text x="-0.4" y="-0.3" font-size="0.05"></text>
 				<text x="-0.4" y="-0.2" font-size="0.05"></text>
 			</svg>
@@ -48,19 +48,18 @@
 					sinc(Math.cos, i0, getXYZ(i1)) - sinc(Math.sin, i0, getXYZ(i2)),
 					sinc(Math.sin, i0, getXYZ(i1)) + sinc(Math.cos, i0, getXYZ(i2))
 				];
-				// document.getElementsByTagName('text')[0].textContent = a;
+				document.getElementsByTagName('text')[0].textContent = a;
 				document.getElementsByTagName('text')[1].textContent = b;
 				document.getElementsByTagName('text')[2].textContent = c;
 
-				[z, x] = calc(-ang[2], 2, 0);
-				[y, z] = calc(ang[1], 1, 2);
-				[x, y] = calc(-ang[0], 0, 1);
+				[z, x] = calc(ang[2], 2, 0);
+				[y, z] = calc(-ang[1], 1, 2);
+				[x, y] = calc(ang[0], 0, 1);
 				circs({
 					'cx': x - 0.05,
 					'cy': y - 0.05,
 					'opacity': z < 0 ? 100 : 0
 				});
-				document.getElementsByTagName('text')[0].style.transform = `rotateZ(${-ang[0]}) rotateX(${ang[1]}) rotateY(${-ang[2]})`
 			};
 			const setXYZs = (gl, ar) => {
 				ar.forEach((v, i) => setXYZ(gl, v, i))
