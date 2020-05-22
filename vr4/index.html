@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-title" content="VR">
+		<title>VR</title>
+		<style>
+			body {
+				margin: 0;
+				overflow: hidden;
+			}
+			#output {
+				-webkit-display: none;
+				-moz-display: none;
+				-ms-display: none;
+				-o-display: none;
+				display: none;
+			}
+			#output > text {fill: white}
+		</style>
+	</head>
+	<body>
+		<main>
+			<button id="permbtn">あなたのスマホのフルパワーを今すぐ確認！</button>
+			<svg id="output" viewBox="-0.5 -0.5 1 1">
+				<circle cx="0" cy="0" r="0.1" fill="red"></circle>
+				<circle cx="0" cy="0" r="0.1" fill="cyan"></circle>
+				<circle cx="0" cy="0" r="0.1" fill="yellow"></circle>
+				<circle cx="0" cy="0" r="0.1" fill="green"></circle>
+				<circle cx="0" cy="0" r="0.1" fill="blue"></circle>
+				<circle cx="0" cy="0" r="0.1" fill="magenta"></circle>
+				<text x="-0.4" y="-0.4" font-size="0.05"></text>
+				<text x="-0.4" y="-0.3" font-size="0.05"></text>
+				<text x="-0.4" y="-0.2" font-size="0.05"></text>
+			</svg>
+		</main>
+		<script>
+			'use strict';
+			const setXYZ = (ang, obj, i) => {
+				let [a, b, c] = ang, [x, y, z] = obj;
+				const getXYZ = i => i == 0 ? x : (i == 1 ? y : (i == 2 ? z : 0));
+				const circs = v => Object.entries(v).forEach(v => document.getElementsByTagName('circle')[i].setAttribute(...v));
+				const sinc = (f, r, i) => f(r * Math.PI / 180) * i;
+				const calc = (i0, i1, i2) => [
+					sinc(Math.cos, i0, getXYZ(i1)) - sinc(Math.sin, i0, getXYZ(i2)),
+					sinc(Math.sin, i0, getXYZ(i1)) + sinc(Math.cos, i0, getXYZ(i2))
+				];
+				document.getElementsByTagName('text')[0].textContent = a;
+				document.getElementsByTagName('text')[1].textContent = b;
+				document.getElementsByTagName('text')[2].textContent = c;
+
+				[z, x] = calc(ang[2], 2, 0);
+				[x, y] = calc(ang[0], 0, 1);
+				[y, z] = calc(ang[1], 1, 2);
+				circs({
+					'cx': x - 0.05,
+					'cy': y - 0.05,
+					'opacity': z < 0 ? 100 : 0
+				});
+			};
+			const setXYZs = (gl, ar) => {
+				ar.forEach((v, i) => setXYZ(gl, v, i))
+			};
+			const fail = () => document.getElementById('permbtn').textContent = 'ごめん無理だった…。';
+			const succ = () => {
+				const out = document.getElementById('output');
+				out.style.display = 'block';
+				out.style.width = screen.width;
+				out.style.height = screen.height;
+				document.getElementById('permbtn').style.display = 'none';
+				document.getElementsByTagName('body')[0].style.backgroundColor = 'black';
+				window.addEventListener('devicemotion', e => {
+				});
+				window.addEventListener('deviceorientation', e => {
+					const circ = document.getElementsByTagName('circle');
+					if (e) {
+						setXYZs(
+							[
+								e.alpha,
+								e.beta,
+								e.gamma
+							],
+							[
+								[0, -1, 0],
+								[0, 1, 0],
+								[0, 0, -1],//,
+								[0, 0, 1],//,
+								[-1, 0, 0],//,
+								[1, 0, 0]//,
+								// [0, 90],
+								// [90, 90],
+								// [180, 90],
+								// [270, 90]
+							]
+						);
+					};
+				});
+				navigator.geolocation.watchPosition(e => {
+				});
+				window.addEventListener('orientationchange', () => {
+				});
+				window.addEventListener('scroll', () => {
+				});
+				window.addEventListener('resize', () => {
+				});
+			};
+
+
+			const rp = () => {
+				try {
+					DeviceMotionEvent.requestPermission().then(mps => {
+						DeviceOrientationEvent.requestPermission().then(ops => {
+							if (mps === 'granted' && ops === 'granted') {
+								succ();
+							} else {
+								fail();
+							};
+						});
+					});
+				} catch {
+					fail();
+				};
+			};
+			if (window.DeviceMotionEvent && DeviceMotionEvent.requestPermission && window.DeviceOrientationEvent && DeviceOrientationEvent.requestPermission) {
+				if (typeof DeviceMotionEvent.requestPermission === 'function' && typeof DeviceOrientationEvent.requestPermission === 'function') {
+					document.getElementById('permbtn').addEventListener('click', rp);
+				} else {
+					succ();
+				};
+			} else {
+				document.getElementsByTagName('main')[0].textContent = 'ごめんwwそもそもこのスマホ対応してないわ。ってかこれ本当にスマホ？';
+			};
+		</script>
+	</body>
+</html>
