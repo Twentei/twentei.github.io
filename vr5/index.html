@@ -52,8 +52,9 @@
 				document.getElementsByTagName('text')[1].textContent = b;
 				document.getElementsByTagName('text')[2].textContent = c;
 
+				[y, z] = calc(-90, 1, 2);
 				[z, x] = calc(ang[2], 2, 0);
-				[y, z] = calc(90 - ang[1], 1, 2);
+				[y, z] = calc(ang[1], 1, 2);
 				[x, y] = calc(-ang[0], 0, 1);
 				circs({
 					'cx': x - 0.05,
