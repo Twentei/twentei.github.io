@@ -26,15 +26,15 @@
 		<main>
 			<button id="permbtn">あなたのスマホのフルパワーを今すぐ確認！</button>
 			<svg id="output" viewBox="-0.5 -0.5 1 1">
-				<text x="-0.4" y="-0.4" font-size="0.05"></text>
-				<text x="-0.4" y="-0.3" font-size="0.05"></text>
-				<text x="-0.4" y="-0.2" font-size="0.05"></text>
 				<circle cx="0" cy="0" r="0.1" fill="red"></circle>
 				<circle cx="0" cy="0" r="0.1" fill="cyan"></circle>
 				<circle cx="0" cy="0" r="0.1" fill="yellow"></circle>
 				<circle cx="0" cy="0" r="0.1" fill="green"></circle>
 				<circle cx="0" cy="0" r="0.1" fill="blue"></circle>
 				<circle cx="0" cy="0" r="0.1" fill="magenta"></circle>
+				<text x="-0.4" y="-0.4" font-size="0.05">こんにちは。</text>
+				<text x="-0.4" y="-0.3" font-size="0.05"></text>
+				<text x="-0.4" y="-0.2" font-size="0.05"></text>
 			</svg>
 		</main>
 		<script>
@@ -48,50 +48,19 @@
 					sinc(Math.cos, i0, getXYZ(i1)) - sinc(Math.sin, i0, getXYZ(i2)),
 					sinc(Math.sin, i0, getXYZ(i1)) + sinc(Math.cos, i0, getXYZ(i2))
 				];
-// 				const calc2 = (i0, i1, i2, i3) => [
-// 					(sinc(Math.cos, i0, getXYZ(i1)) - sinc(Math.sin, i0, getXYZ(i2))) * sinc(Math.cos, i3, 1),
-// 					(sinc(Math.sin, i0, getXYZ(i1)) + sinc(Math.cos, i0, getXYZ(i2))) * sinc(Math.cos, i3, 1)
-// 				];
-// 				if (90 <= b && 90 <= c < 180) {
-// 					c = 
-// 					b = sinc(Math.sin, c, b)
-					
-// 				};
-				// b *= sinc(Math.cos, c + 90, 1);
-				// for (let i = 0; i < 3; i++) {
-				//	document.getElementsByTagName('text')[i].textContent = ang[i];
-				// };
-				document.getElementsByTagName('text')[0].textContent = a;
+				// document.getElementsByTagName('text')[0].textContent = a;
 				document.getElementsByTagName('text')[1].textContent = b;
 				document.getElementsByTagName('text')[2].textContent = c;
 
 				[x, y] = calc(-ang[0], 0, 1);
 				[y, z] = calc(ang[1], 1, 2);
 				[z, x] = calc(-ang[2], 2, 0);
-
-				// ty = y;
-				// tz = z;
-				// y = (tz	* d2r(1, Math.cos)) - (ty	* d2r(1, Math.sin));
-				// z = (tz	* d2r(1, Math.sin)) + (ty	* d2r(1, Math.cos));
-				// x = sinc(Math.cos, -ang[0], getXYZ(0)) - sinc(Math.sin, -ang[1], getXYZ(2)),
-				// z = sinc(Math.sin, -ang[0], getXYZ(0)) + sinc(Math.cos, -ang[1], getXYZ(2))
-				// [x, z] = [
-				// 	sinc(Math.sin, ang[0], getXYZ(0)),
-				// 	sinc(Math.sin, ang[0], getXYZ(2))
-				// ];
-				// [z, x] = calc(-ang[0], 2, 0);
-
-				// calc2(-ang[0], -ang[1], 0, 2);
-				// tx = x;
-				// ty = y;
-				// x = (tx	* Math.cos(d2r(2))) - (ty	* Math.sin(d2r(2)));
-				// y = (tx	* Math.sin(d2r(2))) + (ty	* Math.cos(d2r(2)));
 				circs({
-					// 'opacity': Math.abs(gl[0] - md[0]) < 45 && Math.abs(gl[1] - md[1]) < 90 ? 100 : 0,
 					'cx': x - 0.05,
 					'cy': y - 0.05,
 					'opacity': z < 0 ? 100 : 0
 				});
+				document.getElementsByTagName('circle')[0].style.transform = `rotateZ(${-ang[0]}) rotateX(${ang[1]}) rotateY(${-ang[2]})`
 			};
 			const setXYZs = (gl, ar) => {
 				ar.forEach((v, i) => setXYZ(gl, v, i))
