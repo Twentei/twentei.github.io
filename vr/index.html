@@ -60,7 +60,7 @@
 					'cy': y - 0.05,
 					'opacity': z < 0 ? 100 : 0
 				});
-				document.getElementsByTagName('circle')[0].style.transform = `rotateZ(${-ang[0]}) rotateX(${ang[1]}) rotateY(${-ang[2]})`
+				document.getElementsByTagName('text')[0].style.transform = `rotateZ(${-ang[0]}) rotateX(${ang[1]}) rotateY(${-ang[2]})`
 			};
 			const setXYZs = (gl, ar) => {
 				ar.forEach((v, i) => setXYZ(gl, v, i))
