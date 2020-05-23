@@ -49,11 +49,11 @@
 					sinc(Math.sin, i0, getXYZ(i1)) + sinc(Math.cos, i0, getXYZ(i2))
 				];
 				document.getElementsByTagName('text')[0].textContent = a;
-				document.getElementsByTagName('text')[1].textContent = b;
+				document.getElementsByTagName('text')[1].textContent = b -= 90;
 				document.getElementsByTagName('text')[2].textContent = c;
 
 // 				[z, x] = calc(-ang[0], 2, 0);
-				[y, z] = calc(ang[1] - 90, 1, 2);
+				[y, z] = calc(ang[1], 1, 2);
 				[z, x] = calc(-ang[2], 2, 0);
 				[y, z] = calc(90, 1, 2);
 				circs({
