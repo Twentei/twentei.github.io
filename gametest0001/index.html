@@ -73,7 +73,7 @@
 							DeviceMotionEvent.requestPermission().then(mps => {
 								DeviceOrientationEvent.requestPermission().then(ops => {
 									if (mps === 'granted' && ops === 'granted') {
-										document.addEventListener('deviceorientation', devori);
+										window.addEventListener('deviceorientation', devori);
 									} else {
 										document.addEventListener('mousemove', poimv);
 									};
@@ -83,7 +83,7 @@
 							document.addEventListener('mousemove', poimv);
 						};
 					} else {
-						document.addEventListener('deviceorientation', devori);
+						window.addEventListener('deviceorientation', devori);
 					};
 				} else {
 					document.addEventListener('mousemove', poimv);
