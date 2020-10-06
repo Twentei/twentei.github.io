@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Document</title>
+		<style>
+			body {
+				margin: 0;
+				overflow: hidden;
+			}
+			svg {
+				width: 100vw;
+				height: 100vh;
+			}
+		</style>
+	</head>
+	<body>
+		<svg viewbox="-1 -1 2 2">
+			<circle visibility="hidden" cx="0.5" cy="0.5" r="0.1" fill="#f00"></circle>
+			<circle visibility="hidden" cx="0.5" cy="0.5" r="0.1" fill="#ff0"></circle>
+			<circle visibility="hidden" cx="0.5" cy="0.5" r="0.1" fill="#0f0"></circle>
+			<circle visibility="hidden" cx="0.5" cy="0.5" r="0.1" fill="#0ff"></circle>
+			<circle visibility="hidden" cx="0.5" cy="0.5" r="0.1" fill="#00f"></circle>
+			<circle visibility="hidden" cx="0.5" cy="0.5" r="0.1" fill="#f0f"></circle>
+		</svg>
+		<script>
+			'use strict';
+
+			const svg = document.getElementsByTagName('svg')[0];
+			const obj = document.getElementsByTagName('circle');
+			svg.requestFullscreen = svg.requestFullscreen || svg.mozRequestFullscreen || svg.webkitRequestFullscreen;
+			svg.requestPointerLock = svg.requestPointerLock || svg.mozRequestPointerLock || svg.webkitRequestPointerLock;
+
+			const map = {
+				objpos: [
+					[+1, 0, 0],
+					[-1, 0, 0],
+					[0, +1, 0],
+					[0, -1, 0],
+					[0, 0, +1],
+					[0, 0, -1],
+				]
+			};
+
+			const sys = {
+				sensiX: 0.01,
+				sensiY: 0.001,
+				fovX: 3.2,
+				fovY: 1.6
+			};
+			const player = {
+				x: 0,
+				y: 0,
+				z: 0,
+				ps: 0,
+				th: 0
+			};
+			const poimv = e => {
+				player.ps += (e.movementX || e.mozMovementX || e.webkitMovementX || 0) * sys.sensiX;
+				player.th += (e.movementY || e.mozMovementY || e.webkitMovementY || 0) * sys.sensiY;
+				player.ps %= Math.PI * 2;
+				player.th = Math.max(-Math.PI / 2, Math.min(player.th, Math.PI / 2));
+				objdraw();
+			};
+			const poidn = e => {
+				svg.requestFullscreen();
+				svg.requestPointerLock();
+
+				if (window.DeviceMotionEvent && DeviceMotionEvent.requestPermission && window.DeviceOrientationEvent && DeviceOrientationEvent.requestPermission) {
+					if (typeof DeviceMotionEvent.requestPermission === 'function' && typeof DeviceOrientationEvent.requestPermission === 'function') {
+						try {
+							DeviceMotionEvent.requestPermission().then(mps => {
+								DeviceOrientationEvent.requestPermission().then(ops => {
+									if (mps === 'granted' && ops === 'granted') {
+										document.addEventListener('deviceorientation', devori);
+									} else {
+										document.addEventListener('mousemove', poimv);
+									};
+								});
+							});
+						} catch {
+							document.addEventListener('mousemove', poimv);
+						};
+					} else {
+						document.addEventListener('deviceorientation', devori);
+					};
+				} else {
+					document.addEventListener('mousemove', poimv);
+				};
+			};
+			const objdraw = () => {
+				for (let i = 0; i < obj.length; i++) {
+					let nx, ny, nz;
+					let [x, y, z] = map.objpos[i];
+					nx = x * Math.cos(-player.ps) - z * Math.sin(-player.ps);
+					nz = x * Math.sin(-player.ps) + z * Math.cos(-player.ps);
+					[x, z] = [nx, nz];
+					ny = y * Math.cos(-player.th) - z * Math.sin(-player.th);
+					nz = y * Math.sin(-player.th) + z * Math.cos(-player.th);
+					[y, z] = [ny, nz];
+					if (0 < z) {
+						obj[i].setAttribute('cx', x / z / sys.fovX);
+						obj[i].setAttribute('cy', y / z / sys.fovY);
+						obj[i].setAttribute('visibility', 'visible');
+					} else {
+						obj[i].setAttribute('visibility', 'hidden');
+					};
+				};
+			};
+			const keydn = e => {
+			};
+			const resize = () => {
+
+			};
+			const reflesh = () => {
+			};
+			const devori = e => {
+				if (e) {
+					player.ps = e.alpha;
+					player.th = e.beta;
+				};
+				objdraw();
+			};
+			document.addEventListener('resize', resize)
+			document.addEventListener('mousemove', poimv);
+			document.addEventListener('mousedown', poidn);
+			document.addEventListener('keydown', keydn);
+			setInterval(reflesh);
+		</script>
+	</body>
+</html>
