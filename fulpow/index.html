@@ -17,10 +17,8 @@
 		</style>
 	</head>
 	<body>
-		<main>
-			<button id="permbtn">あなたのスマホのフルパワーを今すぐ確認！</button>
-		</main>
-		<svg viewbox="-1 -1 2 2" ></svg>
+		<button id="permbtn">あなたのスマホのフルパワーを今すぐ確認！</button>
+		<svg viewbox="-1 -1 2 2" display="none"></svg>
 		<script>
 			'use strict';
 			const svg = document.getElementsByTagName('svg')[0];
@@ -51,6 +49,7 @@
 			const fail = () => document.getElementById('permbtn').textContent = 'ごめん無理だった…。';
 			const succ = () => {
 				document.getElementById('permbtn').style.display = 'none';
+				svg.style.display = 'block';
 				window.addEventListener('deviceorientation', e => {
 					const a = e.alpha / 180 * Math.PI, b = e.beta / 180 * Math.PI;
 					o.forEach((v, i) => {
