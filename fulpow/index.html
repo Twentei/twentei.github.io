@@ -7,213 +7,64 @@
 		<style>
 			body {
 				margin: 0;
-				overflow: scroll;
+				overflow: hidden;
 			}
-			p {
-				display: block;
-				margin: 0;
-				white-space: nowrap;
+			svg {
+				width: 100vw;
+				height: 100vh;
+				background-color: #000;
 			}
-			#output {
-				-webkit-display: none;
-				-moz-display: none;
-				-ms-display: none;
-				-o-display: none;
-				display: none;
-				color: #0f0;
-				font-family: monospace;
-			}
-			.fz0 {text-indent: 0rem;}
-			.fz2 {text-indent: 2rem;}
-			.fz4 {text-indent: 4rem;}
-			.fz6 {text-indent: 6rem;}
-			.fz8 {text-indent: 8rem;}
 		</style>
 	</head>
 	<body>
 		<main>
 			<button id="permbtn">あなたのスマホのフルパワーを今すぐ確認！</button>
-			<div id="output">
-				<p class="fz0">const FUL_POW_OF_YOUR_DEV = {</p>
-					<p class="fz2">motion = {</p>
-						<p class="fz4">interval = <span id="mo.i">null</span></p>
-						<p class="fz4">accelerationIncludingGravity = {</p>
-							<p class="fz6">x = <span id="mo.acci.x">null</span></p>
-							<p class="fz6">y = <span id="mo.acci.y">null</span></p>
-							<p class="fz6">z = <span id="mo.acci.z">null</span></p>
-						<p class="fz4">},</p>
-						<p class="fz4">acceleration = {</p>
-							<p class="fz6">x = <span id="mo.acc.x">null</span></p>
-							<p class="fz6">y = <span id="mo.acc.y">null</span></p>
-							<p class="fz6">z = <span id="mo.acc.z">null</span></p>
-						<p class="fz4">},</p>
-						<p class="fz4">rotationRate = {</p>
-							<p class="fz6">alpha = <span id="mo.rot.a">null</span></p>
-							<p class="fz6">beta = <span id="mo.rot.b">null</span></p>
-							<p class="fz6">gamma = <span id="mo.rot.g">null</span></p>
-						<p class="fz4">},</p>
-					<p class="fz2">},</p>
-					<p class="fz2">orientation = {</p>
-						<p class="fz4">absolute = <span id="or.abs">null</span></p>
-						<p class="fz4">alpha = <span id="or.a">null</span></p>
-						<p class="fz4">beta = <span id="or.b">null</span></p>
-						<p class="fz4">gamma = <span id="or.g">null</span></p>
-						<p class="fz4">webkitCompassHeading = <span id="or.wch">null</span></p>
-						<p class="fz4">webkitCompassAccuracy = <span id="or.wca">null</span></p>
-					<p class="fz2">},</p>
-					<p class="fz2">coords = {</p>
-						<p class="fz4">latitude = <span id="co.lat">null</span></p>
-						<p class="fz4">longitude = <span id="co.long">null</span></p>
-						<p class="fz4">altitude = <span id="co.alt">null</span></p>
-						<p class="fz4">accuracy = <span id="co.ac">null</span></p>
-						<p class="fz4">altitudeAccuracy = <span id="co.aac">null</span></p>
-						<p class="fz4">heading = <span id="co.he">null</span></p>
-						<p class="fz4">speed = <span id="co.sp">null</span></p>
-					<p class="fz2">}</p>
-					<p class="fz2">navigator = {</p>
-						<p class="fz4">os = <span id="na.pf">null</span></p>
-						<p class="fz4">maxtouch = <span id="na.mt">null</span></p>
-						<p class="fz4">product = <span id="na.pr">null</span></p>
-						<p class="fz4">productsub = <span id="na.prs">null</span></p>
-						<p class="fz4">appname = <span id="na.an">null</span></p>
-						<p class="fz4">appcodename = <span id="na.acn">null</span></p>
-						<p class="fz4">appver = <span id="na.av">null</span></p>
-						<p class="fz4">useragent = <span id="na.ua">null</span></p>
-						<p class="fz4">vendor = <span id="na.v">null</span></p>
-						<p class="fz4">vendorsub = <span id="na.vs">null</span></p>
-						<p class="fz4">lang = <span id="na.lng">null</span></p>
-						<p class="fz4">cookie = <span id="na.coo">null</span></p>
-					<p class="fz2">}</p>
-					<p class="fz2">screen = {</p>
-						<p class="fz4">type = <span id="sc.ty">null</span></p>
-						<p class="fz4">devdepth = <span id="sc.dd">null</span></p>
-						<p class="fz4">pixeldepth = <span id="sc.pd">null</span></p>
-						<p class="fz4">colordepth = <span id="sc.cd">null</span></p>
-						<p class="fz4">[</p>
-							<p class="fz6">{</p>
-								<p class="fz8">x = <span id="sc.ou.x">null</span></p>
-								<p class="fz8">y = <span id="sc.ou.y">null</span></p>
-								<p class="fz8">w = <span id="sc.ou.w">null</span></p>
-								<p class="fz8">h = <span id="sc.ou.h">null</span></p>
-							<p class="fz6">}</p>
-							<p class="fz6">{</p>
-								<p class="fz8">x = <span id="sc.in.x">null</span></p>
-								<p class="fz8">y = <span id="sc.in.y">null</span></p>
-								<p class="fz8">w = <span id="sc.in.w">null</span></p>
-								<p class="fz8">h = <span id="sc.in.h">null</span></p>
-								<p class="fz8">s = <span id="sc.in.s">null</span></p>
-							<p class="fz6">}</p>
-						<p class="fz4">]</p>
-						<p class="fz4">height = <span id="sc.h">null</span></p>
-						<p class="fz4">orientation = {</p>
-							<p class="fz6">angle = <span id="sc.or.i">null</span></p>
-							<p class="fz6">type = <span id="sc.or.s">null</span></p>
-						<p class="fz4">}</p>
-					<p class="fz2">}</p>
-					<p class="fz2">performance = {</p>
-						<p class="fz4">memory = <span id="pf.m">null</span></p>
-						<p class="fz4">hardware = <span id="pf.h">null</span></p>
-						<p class="fz4">totaljsheap = <span id="pf.tj">null</span></p>
-						<p class="fz4">jsheap = <span id="pf.j">null</span></p>
-						<p class="fz4">usedjsheap = <span id="pf.uj">null</span></p>
-					<p class="fz2">}</p>
-				<p class="fz0">}</p>
-			</div>
 		</main>
+		<svg viewbox="-1 -1 2 2" ></svg>
 		<script>
 			'use strict';
-			const setx = (s, v) => document.getElementById(s).textContent = v == undefined ? 'null' : v;
-			const sett = (s, v) => setx(s, v == undefined ? 'null' : `"${String(v).replace('"', '\"')}"`);
+			const svg = document.getElementsByTagName('svg')[0];
+			const o = [[-3, -3, -3, 'rgb(0%, 0%, 0%)'],[-3, -3, -2, 'rgb(0%, 0%, 16%)'],[-3, -3, -1, 'rgb(0%, 0%, 33%)'],[-3, -3, 0, 'rgb(0%, 0%, 50%)'],[-3, -3, 1, 'rgb(0%, 0%, 66%)'],[-3, -3, 2, 'rgb(0%, 0%, 83%)'],[-3, -3, 3, 'rgb(0%, 0%, 100%)'],[-3, -2, -3, 'rgb(0%, 16%, 0%)'],[-3, -2, -2, 'rgb(0%, 16%, 16%)'],[-3, -2, -1, 'rgb(0%, 16%, 33%)'],[-3, -2, 0, 'rgb(0%, 16%, 50%)'],[-3, -2, 1, 'rgb(0%, 16%, 66%)'],[-3, -2, 2, 'rgb(0%, 16%, 83%)'],[-3, -2, 3, 'rgb(0%, 16%, 100%)'],[-3, -1, -3, 'rgb(0%, 33%, 0%)'],[-3, -1, -2, 'rgb(0%, 33%, 16%)'],[-3, -1, -1, 'rgb(0%, 33%, 33%)'],[-3, -1, 0, 'rgb(0%, 33%, 50%)'],[-3, -1, 1, 'rgb(0%, 33%, 66%)'],[-3, -1, 2, 'rgb(0%, 33%, 83%)'],[-3, -1, 3, 'rgb(0%, 33%, 100%)'],[-3, 0, -3, 'rgb(0%, 50%, 0%)'],[-3, 0, -2, 'rgb(0%, 50%, 16%)'],[-3, 0, -1, 'rgb(0%, 50%, 33%)'],[-3, 0, 0, 'rgb(0%, 50%, 50%)'],[-3, 0, 1, 'rgb(0%, 50%, 66%)'],[-3, 0, 2, 'rgb(0%, 50%, 83%)'],[-3, 0, 3, 'rgb(0%, 50%, 100%)'],[-3, 1, -3, 'rgb(0%, 66%, 0%)'],[-3, 1, -2, 'rgb(0%, 66%, 16%)'],[-3, 1, -1, 'rgb(0%, 66%, 33%)'],[-3, 1, 0, 'rgb(0%, 66%, 50%)'],[-3, 1, 1, 'rgb(0%, 66%, 66%)'],[-3, 1, 2, 'rgb(0%, 66%, 83%)'],[-3, 1, 3, 'rgb(0%, 66%, 100%)'],[-3, 2, -3, 'rgb(0%, 83%, 0%)'],[-3, 2, -2, 'rgb(0%, 83%, 16%)'],[-3, 2, -1, 'rgb(0%, 83%, 33%)'],[-3, 2, 0, 'rgb(0%, 83%, 50%)'],[-3, 2, 1, 'rgb(0%, 83%, 66%)'],[-3, 2, 2, 'rgb(0%, 83%, 83%)'],[-3, 2, 3, 'rgb(0%, 83%, 100%)'],[-3, 3, -3, 'rgb(0%, 100%, 0%)'],[-3, 3, -2, 'rgb(0%, 100%, 16%)'],[-3, 3, -1, 'rgb(0%, 100%, 33%)'],[-3, 3, 0, 'rgb(0%, 100%, 50%)'],[-3, 3, 1, 'rgb(0%, 100%, 66%)'],[-3, 3, 2, 'rgb(0%, 100%, 83%)'],[-3, 3, 3, 'rgb(0%, 100%, 100%)'],[-2, -3, -3, 'rgb(16%, 0%, 0%)'],[-2, -3, -2, 'rgb(16%, 0%, 16%)'],[-2, -3, -1, 'rgb(16%, 0%, 33%)'],[-2, -3, 0, 'rgb(16%, 0%, 50%)'],[-2, -3, 1, 'rgb(16%, 0%, 66%)'],[-2, -3, 2, 'rgb(16%, 0%, 83%)'],[-2, -3, 3, 'rgb(16%, 0%, 100%)'],[-2, -2, -3, 'rgb(16%, 16%, 0%)'],[-2, -2, -2, 'rgb(16%, 16%, 16%)'],[-2, -2, -1, 'rgb(16%, 16%, 33%)'],[-2, -2, 0, 'rgb(16%, 16%, 50%)'],[-2, -2, 1, 'rgb(16%, 16%, 66%)'],[-2, -2, 2, 'rgb(16%, 16%, 83%)'],[-2, -2, 3, 'rgb(16%, 16%, 100%)'],[-2, -1, -3, 'rgb(16%, 33%, 0%)'],[-2, -1, -2, 'rgb(16%, 33%, 16%)'],[-2, -1, -1, 'rgb(16%, 33%, 33%)'],[-2, -1, 0, 'rgb(16%, 33%, 50%)'],[-2, -1, 1, 'rgb(16%, 33%, 66%)'],[-2, -1, 2, 'rgb(16%, 33%, 83%)'],[-2, -1, 3, 'rgb(16%, 33%, 100%)'],[-2, 0, -3, 'rgb(16%, 50%, 0%)'],[-2, 0, -2, 'rgb(16%, 50%, 16%)'],[-2, 0, -1, 'rgb(16%, 50%, 33%)'],[-2, 0, 0, 'rgb(16%, 50%, 50%)'],[-2, 0, 1, 'rgb(16%, 50%, 66%)'],[-2, 0, 2, 'rgb(16%, 50%, 83%)'],[-2, 0, 3, 'rgb(16%, 50%, 100%)'],[-2, 1, -3, 'rgb(16%, 66%, 0%)'],[-2, 1, -2, 'rgb(16%, 66%, 16%)'],[-2, 1, -1, 'rgb(16%, 66%, 33%)'],[-2, 1, 0, 'rgb(16%, 66%, 50%)'],[-2, 1, 1, 'rgb(16%, 66%, 66%)'],[-2, 1, 2, 'rgb(16%, 66%, 83%)'],[-2, 1, 3, 'rgb(16%, 66%, 100%)'],[-2, 2, -3, 'rgb(16%, 83%, 0%)'],[-2, 2, -2, 'rgb(16%, 83%, 16%)'],[-2, 2, -1, 'rgb(16%, 83%, 33%)'],[-2, 2, 0, 'rgb(16%, 83%, 50%)'],[-2, 2, 1, 'rgb(16%, 83%, 66%)'],[-2, 2, 2, 'rgb(16%, 83%, 83%)'],[-2, 2, 3, 'rgb(16%, 83%, 100%)'],[-2, 3, -3, 'rgb(16%, 100%, 0%)'],[-2, 3, -2, 'rgb(16%, 100%, 16%)'],[-2, 3, -1, 'rgb(16%, 100%, 33%)'],[-2, 3, 0, 'rgb(16%, 100%, 50%)'],[-2, 3, 1, 'rgb(16%, 100%, 66%)'],[-2, 3, 2, 'rgb(16%, 100%, 83%)'],[-2, 3, 3, 'rgb(16%, 100%, 100%)'],[-1, -3, -3, 'rgb(33%, 0%, 0%)'],[-1, -3, -2, 'rgb(33%, 0%, 16%)'],[-1, -3, -1, 'rgb(33%, 0%, 33%)'],[-1, -3, 0, 'rgb(33%, 0%, 50%)'],[-1, -3, 1, 'rgb(33%, 0%, 66%)'],[-1, -3, 2, 'rgb(33%, 0%, 83%)'],[-1, -3, 3, 'rgb(33%, 0%, 100%)'],[-1, -2, -3, 'rgb(33%, 16%, 0%)'],[-1, -2, -2, 'rgb(33%, 16%, 16%)'],[-1, -2, -1, 'rgb(33%, 16%, 33%)'],[-1, -2, 0, 'rgb(33%, 16%, 50%)'],[-1, -2, 1, 'rgb(33%, 16%, 66%)'],[-1, -2, 2, 'rgb(33%, 16%, 83%)'],[-1, -2, 3, 'rgb(33%, 16%, 100%)'],[-1, -1, -3, 'rgb(33%, 33%, 0%)'],[-1, -1, -2, 'rgb(33%, 33%, 16%)'],[-1, -1, -1, 'rgb(33%, 33%, 33%)'],[-1, -1, 0, 'rgb(33%, 33%, 50%)'],[-1, -1, 1, 'rgb(33%, 33%, 66%)'],[-1, -1, 2, 'rgb(33%, 33%, 83%)'],[-1, -1, 3, 'rgb(33%, 33%, 100%)'],[-1, 0, -3, 'rgb(33%, 50%, 0%)'],[-1, 0, -2, 'rgb(33%, 50%, 16%)'],[-1, 0, -1, 'rgb(33%, 50%, 33%)'],[-1, 0, 0, 'rgb(33%, 50%, 50%)'],[-1, 0, 1, 'rgb(33%, 50%, 66%)'],[-1, 0, 2, 'rgb(33%, 50%, 83%)'],[-1, 0, 3, 'rgb(33%, 50%, 100%)'],[-1, 1, -3, 'rgb(33%, 66%, 0%)'],[-1, 1, -2, 'rgb(33%, 66%, 16%)'],[-1, 1, -1, 'rgb(33%, 66%, 33%)'],[-1, 1, 0, 'rgb(33%, 66%, 50%)'],[-1, 1, 1, 'rgb(33%, 66%, 66%)'],[-1, 1, 2, 'rgb(33%, 66%, 83%)'],[-1, 1, 3, 'rgb(33%, 66%, 100%)'],[-1, 2, -3, 'rgb(33%, 83%, 0%)'],[-1, 2, -2, 'rgb(33%, 83%, 16%)'],[-1, 2, -1, 'rgb(33%, 83%, 33%)'],[-1, 2, 0, 'rgb(33%, 83%, 50%)'],[-1, 2, 1, 'rgb(33%, 83%, 66%)'],[-1, 2, 2, 'rgb(33%, 83%, 83%)'],[-1, 2, 3, 'rgb(33%, 83%, 100%)'],[-1, 3, -3, 'rgb(33%, 100%, 0%)'],[-1, 3, -2, 'rgb(33%, 100%, 16%)'],[-1, 3, -1, 'rgb(33%, 100%, 33%)'],[-1, 3, 0, 'rgb(33%, 100%, 50%)'],[-1, 3, 1, 'rgb(33%, 100%, 66%)'],[-1, 3, 2, 'rgb(33%, 100%, 83%)'],[-1, 3, 3, 'rgb(33%, 100%, 100%)'],[0, -3, -3, 'rgb(50%, 0%, 0%)'],[0, -3, -2, 'rgb(50%, 0%, 16%)'],[0, -3, -1, 'rgb(50%, 0%, 33%)'],[0, -3, 0, 'rgb(50%, 0%, 50%)'],[0, -3, 1, 'rgb(50%, 0%, 66%)'],[0, -3, 2, 'rgb(50%, 0%, 83%)'],[0, -3, 3, 'rgb(50%, 0%, 100%)'],[0, -2, -3, 'rgb(50%, 16%, 0%)'],[0, -2, -2, 'rgb(50%, 16%, 16%)'],[0, -2, -1, 'rgb(50%, 16%, 33%)'],[0, -2, 0, 'rgb(50%, 16%, 50%)'],[0, -2, 1, 'rgb(50%, 16%, 66%)'],[0, -2, 2, 'rgb(50%, 16%, 83%)'],[0, -2, 3, 'rgb(50%, 16%, 100%)'],[0, -1, -3, 'rgb(50%, 33%, 0%)'],[0, -1, -2, 'rgb(50%, 33%, 16%)'],[0, -1, -1, 'rgb(50%, 33%, 33%)'],[0, -1, 0, 'rgb(50%, 33%, 50%)'],[0, -1, 1, 'rgb(50%, 33%, 66%)'],[0, -1, 2, 'rgb(50%, 33%, 83%)'],[0, -1, 3, 'rgb(50%, 33%, 100%)'],[0, 0, -3, 'rgb(50%, 50%, 0%)'],[0, 0, -2, 'rgb(50%, 50%, 16%)'],[0, 0, -1, 'rgb(50%, 50%, 33%)'],[0, 0, 0, 'rgb(50%, 50%, 50%)'],[0, 0, 1, 'rgb(50%, 50%, 66%)'],[0, 0, 2, 'rgb(50%, 50%, 83%)'],[0, 0, 3, 'rgb(50%, 50%, 100%)'],[0, 1, -3, 'rgb(50%, 66%, 0%)'],[0, 1, -2, 'rgb(50%, 66%, 16%)'],[0, 1, -1, 'rgb(50%, 66%, 33%)'],[0, 1, 0, 'rgb(50%, 66%, 50%)'],[0, 1, 1, 'rgb(50%, 66%, 66%)'],[0, 1, 2, 'rgb(50%, 66%, 83%)'],[0, 1, 3, 'rgb(50%, 66%, 100%)'],[0, 2, -3, 'rgb(50%, 83%, 0%)'],[0, 2, -2, 'rgb(50%, 83%, 16%)'],[0, 2, -1, 'rgb(50%, 83%, 33%)'],[0, 2, 0, 'rgb(50%, 83%, 50%)'],[0, 2, 1, 'rgb(50%, 83%, 66%)'],[0, 2, 2, 'rgb(50%, 83%, 83%)'],[0, 2, 3, 'rgb(50%, 83%, 100%)'],[0, 3, -3, 'rgb(50%, 100%, 0%)'],[0, 3, -2, 'rgb(50%, 100%, 16%)'],[0, 3, -1, 'rgb(50%, 100%, 33%)'],[0, 3, 0, 'rgb(50%, 100%, 50%)'],[0, 3, 1, 'rgb(50%, 100%, 66%)'],[0, 3, 2, 'rgb(50%, 100%, 83%)'],[0, 3, 3, 'rgb(50%, 100%, 100%)'],[1, -3, -3, 'rgb(66%, 0%, 0%)'],[1, -3, -2, 'rgb(66%, 0%, 16%)'],[1, -3, -1, 'rgb(66%, 0%, 33%)'],[1, -3, 0, 'rgb(66%, 0%, 50%)'],[1, -3, 1, 'rgb(66%, 0%, 66%)'],[1, -3, 2, 'rgb(66%, 0%, 83%)'],[1, -3, 3, 'rgb(66%, 0%, 100%)'],[1, -2, -3, 'rgb(66%, 16%, 0%)'],[1, -2, -2, 'rgb(66%, 16%, 16%)'],[1, -2, -1, 'rgb(66%, 16%, 33%)'],[1, -2, 0, 'rgb(66%, 16%, 50%)'],[1, -2, 1, 'rgb(66%, 16%, 66%)'],[1, -2, 2, 'rgb(66%, 16%, 83%)'],[1, -2, 3, 'rgb(66%, 16%, 100%)'],[1, -1, -3, 'rgb(66%, 33%, 0%)'],[1, -1, -2, 'rgb(66%, 33%, 16%)'],[1, -1, -1, 'rgb(66%, 33%, 33%)'],[1, -1, 0, 'rgb(66%, 33%, 50%)'],[1, -1, 1, 'rgb(66%, 33%, 66%)'],[1, -1, 2, 'rgb(66%, 33%, 83%)'],[1, -1, 3, 'rgb(66%, 33%, 100%)'],[1, 0, -3, 'rgb(66%, 50%, 0%)'],[1, 0, -2, 'rgb(66%, 50%, 16%)'],[1, 0, -1, 'rgb(66%, 50%, 33%)'],[1, 0, 0, 'rgb(66%, 50%, 50%)'],[1, 0, 1, 'rgb(66%, 50%, 66%)'],[1, 0, 2, 'rgb(66%, 50%, 83%)'],[1, 0, 3, 'rgb(66%, 50%, 100%)'],[1, 1, -3, 'rgb(66%, 66%, 0%)'],[1, 1, -2, 'rgb(66%, 66%, 16%)'],[1, 1, -1, 'rgb(66%, 66%, 33%)'],[1, 1, 0, 'rgb(66%, 66%, 50%)'],[1, 1, 1, 'rgb(66%, 66%, 66%)'],[1, 1, 2, 'rgb(66%, 66%, 83%)'],[1, 1, 3, 'rgb(66%, 66%, 100%)'],[1, 2, -3, 'rgb(66%, 83%, 0%)'],[1, 2, -2, 'rgb(66%, 83%, 16%)'],[1, 2, -1, 'rgb(66%, 83%, 33%)'],[1, 2, 0, 'rgb(66%, 83%, 50%)'],[1, 2, 1, 'rgb(66%, 83%, 66%)'],[1, 2, 2, 'rgb(66%, 83%, 83%)'],[1, 2, 3, 'rgb(66%, 83%, 100%)'],[1, 3, -3, 'rgb(66%, 100%, 0%)'],[1, 3, -2, 'rgb(66%, 100%, 16%)'],[1, 3, -1, 'rgb(66%, 100%, 33%)'],[1, 3, 0, 'rgb(66%, 100%, 50%)'],[1, 3, 1, 'rgb(66%, 100%, 66%)'],[1, 3, 2, 'rgb(66%, 100%, 83%)'],[1, 3, 3, 'rgb(66%, 100%, 100%)'],[2, -3, -3, 'rgb(83%, 0%, 0%)'],[2, -3, -2, 'rgb(83%, 0%, 16%)'],[2, -3, -1, 'rgb(83%, 0%, 33%)'],[2, -3, 0, 'rgb(83%, 0%, 50%)'],[2, -3, 1, 'rgb(83%, 0%, 66%)'],[2, -3, 2, 'rgb(83%, 0%, 83%)'],[2, -3, 3, 'rgb(83%, 0%, 100%)'],[2, -2, -3, 'rgb(83%, 16%, 0%)'],[2, -2, -2, 'rgb(83%, 16%, 16%)'],[2, -2, -1, 'rgb(83%, 16%, 33%)'],[2, -2, 0, 'rgb(83%, 16%, 50%)'],[2, -2, 1, 'rgb(83%, 16%, 66%)'],[2, -2, 2, 'rgb(83%, 16%, 83%)'],[2, -2, 3, 'rgb(83%, 16%, 100%)'],[2, -1, -3, 'rgb(83%, 33%, 0%)'],[2, -1, -2, 'rgb(83%, 33%, 16%)'],[2, -1, -1, 'rgb(83%, 33%, 33%)'],[2, -1, 0, 'rgb(83%, 33%, 50%)'],[2, -1, 1, 'rgb(83%, 33%, 66%)'],[2, -1, 2, 'rgb(83%, 33%, 83%)'],[2, -1, 3, 'rgb(83%, 33%, 100%)'],[2, 0, -3, 'rgb(83%, 50%, 0%)'],[2, 0, -2, 'rgb(83%, 50%, 16%)'],[2, 0, -1, 'rgb(83%, 50%, 33%)'],[2, 0, 0, 'rgb(83%, 50%, 50%)'],[2, 0, 1, 'rgb(83%, 50%, 66%)'],[2, 0, 2, 'rgb(83%, 50%, 83%)'],[2, 0, 3, 'rgb(83%, 50%, 100%)'],[2, 1, -3, 'rgb(83%, 66%, 0%)'],[2, 1, -2, 'rgb(83%, 66%, 16%)'],[2, 1, -1, 'rgb(83%, 66%, 33%)'],[2, 1, 0, 'rgb(83%, 66%, 50%)'],[2, 1, 1, 'rgb(83%, 66%, 66%)'],[2, 1, 2, 'rgb(83%, 66%, 83%)'],[2, 1, 3, 'rgb(83%, 66%, 100%)'],[2, 2, -3, 'rgb(83%, 83%, 0%)'],[2, 2, -2, 'rgb(83%, 83%, 16%)'],[2, 2, -1, 'rgb(83%, 83%, 33%)'],[2, 2, 0, 'rgb(83%, 83%, 50%)'],[2, 2, 1, 'rgb(83%, 83%, 66%)'],[2, 2, 2, 'rgb(83%, 83%, 83%)'],[2, 2, 3, 'rgb(83%, 83%, 100%)'],[2, 3, -3, 'rgb(83%, 100%, 0%)'],[2, 3, -2, 'rgb(83%, 100%, 16%)'],[2, 3, -1, 'rgb(83%, 100%, 33%)'],[2, 3, 0, 'rgb(83%, 100%, 50%)'],[2, 3, 1, 'rgb(83%, 100%, 66%)'],[2, 3, 2, 'rgb(83%, 100%, 83%)'],[2, 3, 3, 'rgb(83%, 100%, 100%)'],[3, -3, -3, 'rgb(100%, 0%, 0%)'],[3, -3, -2, 'rgb(100%, 0%, 16%)'],[3, -3, -1, 'rgb(100%, 0%, 33%)'],[3, -3, 0, 'rgb(100%, 0%, 50%)'],[3, -3, 1, 'rgb(100%, 0%, 66%)'],[3, -3, 2, 'rgb(100%, 0%, 83%)'],[3, -3, 3, 'rgb(100%, 0%, 100%)'],[3, -2, -3, 'rgb(100%, 16%, 0%)'],[3, -2, -2, 'rgb(100%, 16%, 16%)'],[3, -2, -1, 'rgb(100%, 16%, 33%)'],[3, -2, 0, 'rgb(100%, 16%, 50%)'],[3, -2, 1, 'rgb(100%, 16%, 66%)'],[3, -2, 2, 'rgb(100%, 16%, 83%)'],[3, -2, 3, 'rgb(100%, 16%, 100%)'],[3, -1, -3, 'rgb(100%, 33%, 0%)'],[3, -1, -2, 'rgb(100%, 33%, 16%)'],[3, -1, -1, 'rgb(100%, 33%, 33%)'],[3, -1, 0, 'rgb(100%, 33%, 50%)'],[3, -1, 1, 'rgb(100%, 33%, 66%)'],[3, -1, 2, 'rgb(100%, 33%, 83%)'],[3, -1, 3, 'rgb(100%, 33%, 100%)'],[3, 0, -3, 'rgb(100%, 50%, 0%)'],[3, 0, -2, 'rgb(100%, 50%, 16%)'],[3, 0, -1, 'rgb(100%, 50%, 33%)'],[3, 0, 0, 'rgb(100%, 50%, 50%)'],[3, 0, 1, 'rgb(100%, 50%, 66%)'],[3, 0, 2, 'rgb(100%, 50%, 83%)'],[3, 0, 3, 'rgb(100%, 50%, 100%)'],[3, 1, -3, 'rgb(100%, 66%, 0%)'],[3, 1, -2, 'rgb(100%, 66%, 16%)'],[3, 1, -1, 'rgb(100%, 66%, 33%)'],[3, 1, 0, 'rgb(100%, 66%, 50%)'],[3, 1, 1, 'rgb(100%, 66%, 66%)'],[3, 1, 2, 'rgb(100%, 66%, 83%)'],[3, 1, 3, 'rgb(100%, 66%, 100%)'],[3, 2, -3, 'rgb(100%, 83%, 0%)'],[3, 2, -2, 'rgb(100%, 83%, 16%)'],[3, 2, -1, 'rgb(100%, 83%, 33%)'],[3, 2, 0, 'rgb(100%, 83%, 50%)'],[3, 2, 1, 'rgb(100%, 83%, 66%)'],[3, 2, 2, 'rgb(100%, 83%, 83%)'],[3, 2, 3, 'rgb(100%, 83%, 100%)'],[3, 3, -3, 'rgb(100%, 100%, 0%)'],[3, 3, -2, 'rgb(100%, 100%, 16%)'],[3, 3, -1, 'rgb(100%, 100%, 33%)'],[3, 3, 0, 'rgb(100%, 100%, 50%)'],[3, 3, 1, 'rgb(100%, 100%, 66%)'],[3, 3, 2, 'rgb(100%, 100%, 83%)'],[3, 3, 3, 'rgb(100%, 100%, 100%)']];
+			svg.requestFullscreen = svg.requestFullscreen || svg.mozRequestFullscreen || svg.webkitRequestFullscreen;
+			svg.requestPointerLock = svg.requestPointerLock || svg.mozRequestPointerLock || svg.webkitRequestPointerLock;
+			MouseEvent.movementX = MouseEvent.movementX || MouseEvent.mozMovementX || MouseEvent.webkitMovementX || 0;
+			MouseEvent.movementY = MouseEvent.movementY || MouseEvent.mozMovementY || MouseEvent.webkitMovementY || 0;
+			const key = {};
+			const cam = {
+				x: 0,
+				y: 0,
+				z: 0,
+				ps: 0,
+				th: 0
+			};
+			let prev, x, y, z, t;
+			const reflesh = () => {
+				eles.forEach(v => {
+					v.style.fill = '#fff';
+				});
+				eles.filter((_, i) => 0 < zindex[i][2]).forEach((v, i) => {
+					v.setAttribute('style', `fill:${zindex[i][3]};r:${0.1 / zindex[i][2]};cx:${zindex[i][0] / zindex[i][2]};cy:${-zindex[i][1] / zindex[i][2]};`)
+				});
+			};
+			const zindex = new Array(o.length), eles = o.map(v => svg.appendChild(document.createElementNS('http://www.w3.org/2000/svg', 'circle')));
+
 			const fail = () => document.getElementById('permbtn').textContent = 'ごめん無理だった…。';
 			const succ = () => {
 				document.getElementById('permbtn').style.display = 'none';
-				document.getElementById('output').style.display = 'block';
-				document.getElementsByTagName('body')[0].style.backgroundColor = 'black';
-				window.addEventListener('devicemotion', e => {
-					setx('mo.i', e.interval);
-					setx('mo.acci.x', e.accelerationIncludingGravity.x);
-					setx('mo.acci.y', e.accelerationIncludingGravity.y);
-					setx('mo.acci.z', e.accelerationIncludingGravity.z);
-					setx('mo.acc.x', e.acceleration.x);
-					setx('mo.acc.y', e.acceleration.y);
-					setx('mo.acc.z', e.acceleration.z);
-					setx('mo.rot.a', e.rotationRate.alpha);
-					setx('mo.rot.b', e.rotationRate.beta);
-					setx('mo.rot.g', e.rotationRate.gamma);
-				});
 				window.addEventListener('deviceorientation', e => {
-					setx('or.abs', e.absolute);
-					setx('or.a', e.alpha);
-					setx('or.b', e.beta);
-					setx('or.g', e.gamma);
-					setx('or.wca', e.webkitCompassAccuracy);
-					setx('or.wch', e.webkitCompassHeading);
+					const a = e.alpha / 180 * Math.PI, b = e.beta / 180 * Math.PI;
+					o.forEach((v, i) => {
+						[x, y, t] = v;
+						z = x * Math.sin(a) + t * Math.cos(a);
+						x = x * Math.cos(a) - t * Math.sin(a);
+						t = z;
+						z = y * Math.cos(b) - t * Math.sin(b);
+						y = y * Math.sin(b) + t * Math.cos(b);
+						zindex[i] = [x, y, z, v[3]];
+					});
+					zindex.sort((a, b) => b[2] - a[2]);
+					requestAnimationFrame(reflesh);
 				});
-				navigator.geolocation.watchPosition(e => {
-					setx('co.lat', e.coords.latitude);
-					setx('co.long', e.coords.longitude);
-					setx('co.alt', e.altitude);
-					setx('co.ac', e.coords.accuracy);
-					setx('co.aac', e.altitudeAccuracy);
-					setx('co.he', e.coords.heading);
-					setx('co.sp', e.coords.speed);
-				});
-				window.addEventListener('orientationchange', () => {
-					let angle = screen && screen.orientation && screen.orientation.angle;
-					if (!angle) {
-						angle = window.orientation;
-					};
-					setx('sc.or.i', angle);
-					sett('sc.or.s', screen.msOrientation || screen.mozOrientation || (screen.orientation || {}).type);
-				});
-				let angle = screen && screen.orientation && screen.orientation.angle;
-				if (!angle) {
-					angle = window.orientation;
-				};
-				window.addEventListener('scroll', () => {
-					setx('sc.in.x', visualViewport.pageLeft);
-					setx('sc.in.y', visualViewport.pageTop);
-				});
-				setx('sc.in.x', visualViewport.pageLeft);
-				setx('sc.in.y', visualViewport.pageTop);
-				window.addEventListener('resize', () => {
-					setx('sc.in.w', visualViewport.width);
-					setx('sc.in.h', visualViewport.height);
-				});
-				setx('sc.in.w', visualViewport.width);
-				setx('sc.in.h', visualViewport.height);
-
-				setx('sc.in.s', visualViewport.scale);
-
-				setx('sc.or.i', angle);
-				sett('sc.or.s', screen.msOrientation || screen.mozOrientation || (screen.orientation || {}).type);
-				setx('sc.dd', window.devicePixelRatio);
-				setx('sc.pd', screen.pixelDepth);
-				setx('sc.cd', screen.colorDepth);
-				sett('sc.ty', styleMedia.type);
-				setx('sc.ou.x', screen.availLeft);
-				setx('sc.ou.y', screen.availTop);
-				setx('sc.ou.w', screen.width);
-				setx('sc.ou.h', screen.height);
-
-				sett('na.ua', navigator.userAgent);
-				sett('na.acn', navigator.appCodeName);
-				sett('na.av', navigator.appVersion);
-				sett('na.an', navigator.appName);
-				sett('na.pf', navigator.platform);
-				sett('na.pr', navigator.product);
-				setx('na.prs', navigator.productSub);
-				sett('na.v', navigator.vendor);
-				setx('na.vs', navigator.vendorSub);
-				sett('na.lng', navigator.language);
-				setx('na.coo', navigator.cookieEnable);
-				setx('na.mt', navigator.maxTouchPoints);
-
-				setx('pf.m', navigator.deviceMemory);
-				setx('pf.h', navigator.hardwareConcurrency);
-				setx('pf.tj', performance.memory.jsHeapSizeLimit);
-				setx('pf.j', performance.memory.totalJSHeapSize);
-				setx('pf.uj', performance.memory.usedJSHeapSize);
 			};
 
 
@@ -232,6 +83,7 @@
 					fail();
 				};
 			};
+
 			if (window.DeviceMotionEvent && DeviceMotionEvent.requestPermission && window.DeviceOrientationEvent && DeviceOrientationEvent.requestPermission) {
 				if (typeof DeviceMotionEvent.requestPermission === 'function' && typeof DeviceOrientationEvent.requestPermission === 'function') {
 					document.getElementById('permbtn').addEventListener('click', rp);
